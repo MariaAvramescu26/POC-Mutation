@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'info.solidsoft.pitest' version '1.7.4'
+}
+
+group 'com.pocmutationtesting'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+pitest {
+    targetClasses = ['com.pocmutationtesting.*']
+    pitestVersion = '1.9.0'
+    junit5PluginVersion = '1.0.0'
+    threads = 4
+    outputFormats = ['HTML']
+    timestampedReports = false
+}
+
+test {
+    useJUnitPlatform()
+}
